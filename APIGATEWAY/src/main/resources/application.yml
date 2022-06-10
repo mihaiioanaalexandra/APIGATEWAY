@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: localhost:8081
+          uri: lb://localhost:8081
+          predicates:
+            - Path=/skimanagement/api/v2/**
+        - id: localhost:8080
+          uri: lb://MAIN-SERVICE
+          predicates:
+            - Path=/skimanagement/api/v1/**
